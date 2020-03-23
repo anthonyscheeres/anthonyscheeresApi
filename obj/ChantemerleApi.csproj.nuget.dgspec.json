@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\school\\Csharp\\ChantemerleApi\\ChantemerleApi.csproj": {}
+    "D:\\school\\Csharp\\anthonyscheeres\\ChantemerleApi.csproj": {}
   },
   "projects": {
-    "D:\\school\\Csharp\\ChantemerleApi\\ChantemerleApi.csproj": {
+    "D:\\school\\Csharp\\anthonyscheeres\\ChantemerleApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\school\\Csharp\\ChantemerleApi\\ChantemerleApi.csproj",
+        "projectUniqueName": "D:\\school\\Csharp\\anthonyscheeres\\ChantemerleApi.csproj",
         "projectName": "ChantemerleApi",
-        "projectPath": "D:\\school\\Csharp\\ChantemerleApi\\ChantemerleApi.csproj",
+        "projectPath": "D:\\school\\Csharp\\anthonyscheeres\\ChantemerleApi.csproj",
         "packagesPath": "C:\\Users\\info\\.nuget\\packages\\",
-        "outputPath": "D:\\school\\Csharp\\ChantemerleApi\\obj\\",
+        "outputPath": "D:\\school\\Csharp\\anthonyscheeres\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -62,10 +62,6 @@
             "Npgsql": {
               "target": "Package",
               "version": "[4.1.3.1, )"
-            },
-            "YamlDotNet": {
-              "target": "Package",
-              "version": "[8.1.0, )"
             }
           },
           "imports": [
