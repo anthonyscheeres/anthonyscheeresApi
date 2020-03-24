@@ -9,7 +9,7 @@ namespace AnthonyscheeresApi.Utilities
     public class ConfigFileInDocumetsFolderUtililities
     {
 
-         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/ChantemerleServer/";
+         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/AnthonyScheeresServer/";
         string filename = "config.json";
 
   

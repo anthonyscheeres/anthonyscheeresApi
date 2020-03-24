@@ -25,9 +25,9 @@ namespace AnthonyscheeresApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-  
 
-
+            
+           
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             if (env.IsDevelopment())

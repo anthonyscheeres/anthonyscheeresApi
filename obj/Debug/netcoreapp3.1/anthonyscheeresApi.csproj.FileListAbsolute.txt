@@ -1,4 +1,3 @@
-D:\school\Csharp\anthonyscheeres\obj\Debug\netcoreapp3.1\anthonyscheeresApi.csprojAssemblyReference.cache
 D:\school\Csharp\anthonyscheeres\obj\Debug\netcoreapp3.1\staticwebassets\anthonyscheeresApi.StaticWebAssets.Manifest.cache
 D:\school\Csharp\anthonyscheeres\obj\Debug\netcoreapp3.1\staticwebassets\anthonyscheeresApi.StaticWebAssets.xml
 D:\school\Csharp\anthonyscheeres\obj\Debug\netcoreapp3.1\anthonyscheeresApi.MvcApplicationPartsAssemblyInfo.cache

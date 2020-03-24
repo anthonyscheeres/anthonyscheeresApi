@@ -1,48 +1,33 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using AnthonyscheeresApi.Utilities;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace AnthonyscheeresApi
 {
     public class Program
     {
+
+
         public static void Main(string[] args)
         {
             ConfigFileInDocumetsFolderUtililities directoryUtilitiescs = new ConfigFileInDocumetsFolderUtililities("config.json");
             directoryUtilitiescs.writeDataModelToJsonFileInDocumetsFolder();
-            string address = "http://localhost:6000/";
-            if (args.Length!=0)
-            {
-                address = args[0];
-
-            }
 
 
-            var host = new WebHostBuilder()
-    .UseKestrel()
-    .UseContentRoot(Directory.GetCurrentDirectory())
-    .UseIISIntegration()
-    .UseStartup<Startup>()
-    .UseUrls(address)
-    .Build();
 
-            host.Run();
-
-
-           // CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseUrls("http://0.0.0.0:8080/");
+                    webBuilder.UseKestrel();
+                    webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
+                    webBuilder.UseIISIntegration();
+               
                     webBuilder.UseStartup<Startup>();
                 });
     }
