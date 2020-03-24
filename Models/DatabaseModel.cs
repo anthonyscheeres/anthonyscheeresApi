@@ -1,4 +1,4 @@
-﻿namespace ChantemerleApi.Models
+﻿namespace AnthonyscheeresApi.Models
 {
 	public class DatabaseModel
 	{

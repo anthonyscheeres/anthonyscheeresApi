@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace ChantemerleApi.Utilities
+namespace AnthonyscheeresApi.Utilities
 {
     /**
 	 * @author Anthony Scheeres

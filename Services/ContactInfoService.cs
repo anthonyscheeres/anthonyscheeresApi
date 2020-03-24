@@ -1,7 +1,7 @@
-﻿using ChantemerleApi.Dao;
-using ChantemerleApi.Models;
+﻿using AnthonyscheeresApi.Dao;
+using AnthonyscheeresApi.Models;
 
-namespace ChantemerleApi.Services
+namespace AnthonyscheeresApi.Services
 {
     public class ContactInfoService
     {

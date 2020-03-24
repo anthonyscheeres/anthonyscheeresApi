@@ -6554,9 +6554,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\school\\Csharp\\anthonyscheeres\\ChantemerleApi.csproj",
-      "projectName": "ChantemerleApi",
-      "projectPath": "D:\\school\\Csharp\\anthonyscheeres\\ChantemerleApi.csproj",
+      "projectUniqueName": "D:\\school\\Csharp\\anthonyscheeres\\anthonyscheeresApi.csproj",
+      "projectName": "anthonyscheeresApi",
+      "projectPath": "D:\\school\\Csharp\\anthonyscheeres\\anthonyscheeresApi.csproj",
       "packagesPath": "C:\\Users\\info\\.nuget\\packages\\",
       "outputPath": "D:\\school\\Csharp\\anthonyscheeres\\obj\\",
       "projectStyle": "PackageReference",

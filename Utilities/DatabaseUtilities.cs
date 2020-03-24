@@ -1,9 +1,9 @@
-﻿using ChantemerleApi.Models;
+﻿using AnthonyscheeresApi.Models;
 using Newtonsoft.Json;
 using Npgsql;
 using System.Data;
 
-namespace ChantemerleApi.Utilities
+namespace AnthonyscheeresApi.Utilities
 {
     public class DatabaseUtilities
     {

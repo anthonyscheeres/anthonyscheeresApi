@@ -1,11 +1,11 @@
-﻿using ChantemerleApi.Models;
-using ChantemerleApi.Utilities;
+﻿using AnthonyscheeresApi.Models;
+using AnthonyscheeresApi.Utilities;
 using Newtonsoft.Json;
 using Npgsql;
 using System;
 using System.Data;
 
-namespace ChantemerleApi.Dao
+namespace AnthonyscheeresApi.Dao
 {
     public class PermissionDao
     {

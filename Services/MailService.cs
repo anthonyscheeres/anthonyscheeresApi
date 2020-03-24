@@ -1,7 +1,7 @@
-﻿using ChantemerleApi.Models;
-using ChantemerleApi.Utilities;
+﻿using AnthonyscheeresApi.Models;
+using AnthonyscheeresApi.Utilities;
 
-namespace ChantemerleApi.Services
+namespace AnthonyscheeresApi.Services
 {
     public class MailService
     {

@@ -1,10 +1,10 @@
-﻿using ChantemerleApi.Models;
+﻿using AnthonyscheeresApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 
 
-namespace ChantemerleApi.Utilities 
+namespace AnthonyscheeresApi.Utilities 
 {
     public class ConfigFileInDocumetsFolderUtililities
     {

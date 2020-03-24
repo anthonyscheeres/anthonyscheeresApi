@@ -1,10 +1,10 @@
-﻿using ChantemerleApi.Dao;
-using ChantemerleApi.Models;
-using ChantemerleApi.Utilities;
+﻿using AnthonyscheeresApi.Dao;
+using AnthonyscheeresApi.Models;
+using AnthonyscheeresApi.Utilities;
 using System;
 using System.Threading;
 
-namespace ChantemerleApi.Services
+namespace AnthonyscheeresApi.Services
 {
     /**
 	 * @author Anthony Scheeres

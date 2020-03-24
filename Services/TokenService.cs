@@ -1,7 +1,7 @@
-﻿using ChantemerleApi.Dao;
+﻿using AnthonyscheeresApi.Dao;
 using System.Security.Authentication;
 
-namespace ChantemerleApi.Services
+namespace AnthonyscheeresApi.Services
 {
     public class TokenService
     {

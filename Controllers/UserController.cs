@@ -1,8 +1,8 @@
-﻿using ChantemerleApi.Services;
+﻿using AnthonyscheeresApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace ChantemerleApi.Controllers
+namespace AnthonyscheeresApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

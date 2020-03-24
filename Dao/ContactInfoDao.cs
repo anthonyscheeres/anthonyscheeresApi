@@ -1,12 +1,12 @@
-﻿using ChantemerleApi.Models;
-using ChantemerleApi.Utilities;
+﻿using AnthonyscheeresApi.Models;
+using AnthonyscheeresApi.Utilities;
 using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ChantemerleApi.Dao
+namespace AnthonyscheeresApi.Dao
 {
     /**
 * @author Anthony Scheeres

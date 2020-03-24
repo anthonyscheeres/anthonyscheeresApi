@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
-using ChantemerleApi.Models;
+using AnthonyscheeresApi.Models;
 
-namespace ChantemerleApi.Utilities
+namespace AnthonyscheeresApi.Utilities
 {
 
     /**
