@@ -19,6 +19,15 @@ namespace AnthonyscheeresApi.Controllers
             return userService.validateShowAllUsersIncludingAdmins(token); ;
         }
 
+        // GET: api/User/validateGetProfile?token={token}
+        [HttpGet("token")]
+        [Route("validateGetProfile")]
+        public string validateProfileToken([FromQuery] string token)
+        {
+
+            return userService.validateProfile(token);
+
+        }
         // POST: api/User/register
         [HttpPost]
         [Route("register")]

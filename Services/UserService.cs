@@ -25,6 +25,25 @@ namespace AnthonyscheeresApi.Services
         }
 
 
+        internal string validateProfile(string token)
+        {        //Get tokenServices by passsing the token
+            TokenService tokenService = new TokenService(token);
+
+            string response = ResponseR.success.ToString();
+
+
+            //check if the token is valide
+            double id = tokenService.TokenToUserId();
+
+            response = userDao.getProfileInformationFromDatabase(id);
+
+
+            return response;
+
+
+
+        }
+
 
         /**
 * @author Anthony Scheeres
