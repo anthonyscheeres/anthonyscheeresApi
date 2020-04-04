@@ -24,9 +24,9 @@ namespace AnthonyscheeresApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseUrls("http://0.0.0.0:8080/");
-                    webBuilder.UseKestrel();
+                   // webBuilder.UseKestrel();
                     webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
-                    webBuilder.UseIISIntegration();
+                   // webBuilder.UseIISIntegration();
                
                     webBuilder.UseStartup<Startup>();
                 });

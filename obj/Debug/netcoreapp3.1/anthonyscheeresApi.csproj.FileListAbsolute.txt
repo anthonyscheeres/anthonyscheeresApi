@@ -94,3 +94,4 @@ D:\school\Csharp\anthonyscheeres\obj\Debug\netcoreapp3.1\anthonyscheeresApi.Razo
 D:\school\Csharp\anthonyscheeres\obj\Debug\netcoreapp3.1\anthonyscheeresApi.csproj.CopyComplete
 D:\school\Csharp\anthonyscheeres\obj\Debug\netcoreapp3.1\anthonyscheeresApi.dll
 D:\school\Csharp\anthonyscheeres\obj\Debug\netcoreapp3.1\anthonyscheeresApi.pdb
+D:\school\Csharp\anthonyscheeres\obj\Debug\netcoreapp3.1\anthonyscheeresApi.csprojAssemblyReference.cache
