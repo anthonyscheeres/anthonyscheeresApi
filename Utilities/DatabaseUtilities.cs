@@ -1,38 +1,29 @@
-﻿using AnthonyscheeresApi.Models;
+﻿using anthonyscheeresApi.Providers;
+using AnthonyscheeresApi.Models;
 using Newtonsoft.Json;
 using Npgsql;
 using System.Data;
 
 namespace AnthonyscheeresApi.Utilities
 {
-    public class DatabaseUtilities
+     internal class DatabaseUtilities
     {
 
-        private string cs = DataModel.getConfigModel().databaseCredentials.cs;
 
-        public DatabaseUtilities(string cs)
-        {
-            this.cs = cs;
-        }
 
-        public DatabaseUtilities()
+         internal DatabaseUtilities()
         {
 
         }
 
-        public string sendSelectQueryToDatabaseReturnJson(string sqlQuery)
+         internal string sendSelectQueryToDatabaseReturnJson(string sqlQuery)
         {
-            return sendSelectQueryToDatabaseReturnJsonPrivate(sqlQuery, cs);
+            return sendSelectQueryToDatabaseReturnJsonPrivate(sqlQuery);
         }
 
-        public string sendSelectQueryToDatabaseReturnJson(string sqlQuery, string cs)
+        private string sendSelectQueryToDatabaseReturnJsonPrivate(string sqlQuery)
         {
-            return sendSelectQueryToDatabaseReturnJsonPrivate(sqlQuery, cs);
-        }
-
-        private string sendSelectQueryToDatabaseReturnJsonPrivate(string sqlQuery, string cs)
-        {
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 

@@ -1,3 +1,4 @@
+using anthonyscheeresApi.Providers;
 using AnthonyscheeresApi.Models;
 using AnthonyscheeresApi.Utilities;
 using Npgsql;
@@ -9,23 +10,16 @@ namespace AnthonyscheeresApi.Dao
     /**
 	 * @author Anthony Scheeres
 	 */
-    public class UserDao
+     internal class UserDao
     {
-        private string cs = DataModel.getConfigModel().databaseCredentials.cs;
+        
         private readonly DatabaseUtilities databaseUtilities = new DatabaseUtilities();
 
-        /**
-   * @author Anthony Scheeres
-   */
-        public UserDao(string cs)
-        {
-            this.cs = cs;
-        }
 
         /**
    * @author Anthony Scheeres
    */
-        public UserDao()
+         internal UserDao()
         {
         }
 
@@ -55,7 +49,7 @@ namespace AnthonyscheeresApi.Dao
 
             var sqlQueryForRegistingUser = "select email from app_users where token = @token";
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 
@@ -92,7 +86,7 @@ namespace AnthonyscheeresApi.Dao
         {
             const bool is_super_user = false;
             const bool is_email_verified = false;
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
             connectionWithDatabase.Open(); //open the connection
 
 
@@ -117,7 +111,7 @@ namespace AnthonyscheeresApi.Dao
         {
             const string sqlQueryForRegistingUser = "SELECT EXISTS(SELECT * FROM app_users WHERE token = @token AND is_email_verified = true)";
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 
@@ -180,7 +174,7 @@ namespace AnthonyscheeresApi.Dao
         internal void changePasswordByUserIdInDatabase(string password, double id, string username)
         {
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
             connectionWithDatabase.Open(); //open the connection
 
 
@@ -208,7 +202,7 @@ namespace AnthonyscheeresApi.Dao
 */
         internal void changePasswordByUsernameInDatabase(string username, string password)
         {
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
             connectionWithDatabase.Open(); //open the connection
 
 
@@ -236,7 +230,7 @@ namespace AnthonyscheeresApi.Dao
   */
         internal void deleteUserByUsername(UserModel user)
         {
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
             connectionWithDatabase.Open(); //open the connection
 
 

@@ -3,13 +3,13 @@ using AnthonyscheeresApi.Utilities;
 
 namespace AnthonyscheeresApi.Services
 {
-    public class MailService
+     internal class MailService
     {
 
         private readonly MailUtilities mailUtilities = new MailUtilities();
         private string email;
 
-        public MailService(string email)
+         internal MailService(string email)
         {
             this.email = email;
         }

@@ -1,4 +1,5 @@
-﻿using AnthonyscheeresApi.Models;
+﻿using anthonyscheeresApi.Providers;
+using AnthonyscheeresApi.Models;
 using AnthonyscheeresApi.Utilities;
 using Npgsql;
 using System;
@@ -11,25 +12,17 @@ namespace AnthonyscheeresApi.Dao
     /**
 * @author Anthony Scheeres
 */
-    public class ContactInfoDao
+     internal class ContactInfoDao
     {
-        private string cs = DataModel.getConfigModel().databaseCredentials.cs;
+        
         private DatabaseUtilities databaseUtilities = new DatabaseUtilities();
         /**
 * @author Anthony Scheeres
 */
-        public ContactInfoDao()
+         internal ContactInfoDao()
         {
         }
-        /**
-* @author Anthony Scheeres
-*/
-        public ContactInfoDao(string cs)
-        {
-            this.cs = cs;
-        }
-
-
+  
         /**
 * @author Anthony Scheeres
 */
@@ -38,7 +31,7 @@ namespace AnthonyscheeresApi.Dao
             //const query for updating each record of the table
             const string sqlQueryForChangingContactInfo = "update contact_information_owner set name = @name; update contact_information_owner set place = @place; update contact_information_owner set address = @address; update contact_information_owner set postal_code = @postal_code; update contact_information_owner set telephone = @telephone; update contact_information_owner set mail = @mail";
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs); //start new Npgsql instance for connecting with an postgres database//start new Npgsql instance for connecting with an postgres database
+            using var connectionWithDatabase = ConnectionProvider.getProvide(); //start new Npgsql instance for connecting with an postgres database//start new Npgsql instance for connecting with an postgres database
             connectionWithDatabase.Open(); //open the connection
 
 
@@ -71,7 +64,7 @@ namespace AnthonyscheeresApi.Dao
         /**
 * @author Anthony Scheeres
 */
-        internal string getContactInfoAsJsonFormatForPublicUsersFromDatabase()
+        internal string getContactInfoAsJsonFormatFor()
         {
             string sqlQueryForChangingContactInfo = "select * from contact_information_owner;";
             string jsonString = databaseUtilities.sendSelectQueryToDatabaseReturnJson(sqlQueryForChangingContactInfo);

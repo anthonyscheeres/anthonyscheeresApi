@@ -1,6 +1,6 @@
 ﻿namespace AnthonyscheeresApi.Models
 {
-	public enum ResponseR
+	 public enum ResponseR
 	{
 		success,
 		fail

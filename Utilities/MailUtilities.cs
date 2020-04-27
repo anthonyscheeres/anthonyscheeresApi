@@ -12,7 +12,7 @@ namespace AnthonyscheeresApi.Utilities
     /**
 * @author Anthony Scheeres
 */
-    public class MailUtilities
+     internal class MailUtilities
 
     {
         private MailAddress fromAddress = new MailAddress(DataModel.getConfigModel().mailCredentials.username, "Chantemerle");
@@ -22,12 +22,12 @@ namespace AnthonyscheeresApi.Utilities
         /**
 * @author Anthony Scheeres
 */
-        public MailUtilities()
+         internal MailUtilities()
         {
 
         }
 
-        public MailUtilities(MailAddress fromAddress, string fromPassword, string mailClient)
+         internal MailUtilities(MailAddress fromAddress, string fromPassword, string mailClient)
         {
             this.fromAddress = fromAddress;
             this.fromPassword = fromPassword;
@@ -38,7 +38,7 @@ namespace AnthonyscheeresApi.Utilities
         /**
 * @author Anthony Scheeres
 */
-        public void sendEmailToAdressWithABodyAndSubjectUsingCredentialsInDataModel(string toEmailAddress, string username, string subject, string body)
+         internal void sendEmailToAdressWithABodyAndSubjectUsingCredentialsInDataModel(string toEmailAddress, string username, string subject, string body)
         {
             sendEmailWithGmailToAdressWithABodyAndSubject(toEmailAddress, username, subject, body);
         }
@@ -47,7 +47,7 @@ namespace AnthonyscheeresApi.Utilities
         /**
 * @author Anthony Scheeres
 */
-        public void sendEmailToAdressWithABodyAndSubjectUsingCredentialsInDataModel(string toEmailAddress, string subject, string body)
+         internal void sendEmailToAdressWithABodyAndSubjectUsingCredentialsInDataModel(string toEmailAddress, string subject, string body)
         {
             string user = "Gebruiker";
             sendEmailWithGmailToAdressWithABodyAndSubject(toEmailAddress, user, subject, body);

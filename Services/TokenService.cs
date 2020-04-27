@@ -3,46 +3,35 @@ using System.Security.Authentication;
 
 namespace AnthonyscheeresApi.Services
 {
-    public class TokenService
+     internal class TokenService
     {
         private readonly TokenDao tokenDao = new TokenDao();
-        private string token;
 
-        /**
-    * @author Anthony Scheeres
-    */
-        //Get tokenServices by passsing the token
-        internal TokenService(string token)
+
+       internal TokenService()
         {
-            this.token = token;
+
         }
 
 
         /**
     * @author Anthony Scheeres
     */
-        internal void getPermissionFromDatabaseByTokenIsAdmin()
+        internal void getPermissionFromDatabaseByTokenIsAdmin(string token)
         {
             getPermissionFromDatabaseByTokenIsAdmin(token);
 
         }
 
 
-        /**
-* @author Anthony Scheeres
-*/
-        private void getPermissionFromDatabaseByTokenIsAdmin(string tok)
-        {
-            getPermissionFromDatabaseByTokenIsAdmin1(tok);
-
-        }
+ 
 
 
 
         /**
     * @author Anthony Scheeres
     */
-       private void getPermissionFromDatabaseByTokenIsAdmin1(string token)
+       internal void getPermissionFromDatabaseByTokenIsAdmin1(string token)
         {
             //default response
             bool response = false;
@@ -58,15 +47,12 @@ namespace AnthonyscheeresApi.Services
 
 
 
-        internal double TokenToUserId()
+        internal double TokenToUserId(string token)
         {
             return TokenToUserId(token);
         }
 
-        private  double TokenToUserId(string token)
-        {
-            return TokenToUserId2(token);
-        }
+
 
 
 

@@ -1,22 +1,23 @@
-﻿using AnthonyscheeresApi.Dao;
+﻿using anthonyscheeresApi.Providers;
+using AnthonyscheeresApi.Dao;
 using AnthonyscheeresApi.Models;
 
 namespace AnthonyscheeresApi.Services
 {
-    public class ContactInfoService
+     internal class ContactInfoService
     {
-        private readonly ContactInfoDao contactInfoDao = new ContactInfoDao();
+        private readonly ContactInfoDao contactInfoDao = DaoProvider.getContact();
 
-        internal string getContactInfoAsJsonFormatForPublicUsers()
+        internal string getContactInfoAsJsonFormatFor()
         {
-            return contactInfoDao.getContactInfoAsJsonFormatForPublicUsersFromDatabase();
+            return contactInfoDao.getContactInfoAsJsonFormatFor();
         }
 
         internal string validateChangeContactInfo(string token, ContactInfoModel contactInfo)
         {
-            TokenService tokenService = new TokenService(token);
+            TokenService tokenService = ServiceProvider.getToken();
             //if token is invalide throw exception
-            tokenService.getPermissionFromDatabaseByTokenIsAdmin();
+            tokenService.getPermissionFromDatabaseByTokenIsAdmin(token);
             //failed response by default
             string failResponse = ResponseR.fail.ToString(); string response = failResponse;
 

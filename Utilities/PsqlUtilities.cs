@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnthonyscheeresApi.Utilities
 {
-    public static class PsqlUtilities
+     internal static class PsqlUtilities
     {
 
 
@@ -14,7 +14,7 @@ namespace AnthonyscheeresApi.Utilities
  *This methode doesn't seem to work with less rows than 2
  * 
              */
-        public static object GetString(this NpgsqlDataReader source, string colname)
+         internal static object GetString(this NpgsqlDataReader source, string colname)
         {
             if (string.IsNullOrEmpty(colname))
                 throw new ArgumentNullException();
@@ -22,7 +22,7 @@ namespace AnthonyscheeresApi.Utilities
             return source.GetString(source.GetOrdinal(colname));
         }
 
-        public static List<object[]> GetAll(NpgsqlDataReader reader)
+         internal static List<object[]> GetAll(NpgsqlDataReader reader)
         {
            
 

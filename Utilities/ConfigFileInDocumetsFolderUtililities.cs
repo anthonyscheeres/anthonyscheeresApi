@@ -6,7 +6,7 @@ using System.IO;
 
 namespace AnthonyscheeresApi.Utilities 
 {
-    public class ConfigFileInDocumetsFolderUtililities
+     internal class ConfigFileInDocumetsFolderUtililities
     {
 
          string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/AnthonyScheeresServer/";
@@ -14,13 +14,13 @@ namespace AnthonyscheeresApi.Utilities
 
   
 
-        public ConfigFileInDocumetsFolderUtililities(string filename)
+         internal ConfigFileInDocumetsFolderUtililities(string filename)
         {
             this.filename = filename;
         }
 
 
-        public void writeDataModelToJsonFileInDocumetsFolder() 
+         internal void writeDataModelToJsonFileInDocumetsFolder() 
         {
             //Construct path to file
             string pathToFile = path + filename;

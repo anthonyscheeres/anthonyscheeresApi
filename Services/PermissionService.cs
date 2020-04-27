@@ -1,4 +1,5 @@
-﻿using AnthonyscheeresApi.Dao;
+﻿using anthonyscheeresApi.Providers;
+using AnthonyscheeresApi.Dao;
 using AnthonyscheeresApi.Models;
 using System.Security.Authentication;
 
@@ -10,8 +11,11 @@ namespace AnthonyscheeresApi.Services
 */
     internal class PermissionService
     {
+        PermissionDao permissionDao = DaoProvider.getPermission();
+        internal PermissionService()
+        {
 
-
+        }
 
         /**
 * @author Anthony Scheeres
@@ -45,7 +49,7 @@ namespace AnthonyscheeresApi.Services
 */
         private string loginUser(string username, string password)
         {
-            PermissionDao permissionDao = new PermissionDao(username);
+       
 
             //check if username and password combo exist only works if usernames stay unique
             checkUsernameAndPassword(username, password);
@@ -57,8 +61,10 @@ namespace AnthonyscheeresApi.Services
 
 
             string successfulResponse = ResponseR.success.ToString(); response = successfulResponse;
-            permissionDao.changeTokenInDataBaseByUsernameBeforeLoginIn();
-            response = permissionDao.getSensitiveUserInfoFromDatabaseByUsername();
+
+
+            permissionDao.changeTokenInDataBaseByUsernameBeforeLoginIn(username);
+            response = permissionDao.getSensitiveUserInfoFromDatabaseByUsername(username);
 
 
 
@@ -67,9 +73,9 @@ namespace AnthonyscheeresApi.Services
 
         private void checkUsernameAndPassword(string username, string password)
         {
-            PermissionDao permissionDao = new PermissionDao(username);
+       
 
-            if (!permissionDao.checkUsernameAndPassword(password))
+            if (!permissionDao.checkUsernameAndPassword(password, username))
             {
                 throw new AuthenticationException();
             }

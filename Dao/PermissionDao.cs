@@ -1,4 +1,5 @@
-﻿using AnthonyscheeresApi.Models;
+﻿using anthonyscheeresApi.Providers;
+using AnthonyscheeresApi.Models;
 using AnthonyscheeresApi.Utilities;
 using Newtonsoft.Json;
 using Npgsql;
@@ -7,36 +8,28 @@ using System.Data;
 
 namespace AnthonyscheeresApi.Dao
 {
-    public class PermissionDao
+     internal class PermissionDao
     {
         private readonly DatabaseUtilities databaseUtilities = new DatabaseUtilities();
-        private string cs = DataModel.getConfigModel().databaseCredentials.cs;
-        private string username = "";
+        
+       
 
-        public PermissionDao(string cs, string username)
-        {
-            this.cs = cs;
-            this.username = username;
-        }
+    
 
-        public PermissionDao(string username)
-        {
-            this.username = username;
-        }
-
+  
 
 
 
         /**
 * @author Anthony Scheeres
 */
-        internal bool checkUsernameAndPassword(string password)
+        internal bool checkUsernameAndPassword(string password, string username)
         {
             const string sqlQueryForRegistingUser = "SELECT EXISTS(SELECT * FROM app_users WHERE username = @username AND password = concat(md5(@username), md5(@password)))";
 
 
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 
@@ -72,11 +65,11 @@ namespace AnthonyscheeresApi.Dao
         /**
 * @author Anthony Scheeres
 */
-        internal bool checkUsernameAndToken( string token)
+        internal bool checkUsernameAndToken( string token, string username)
         {
             const string sqlQueryForRegistingUser = "SELECT EXISTS(SELECT * FROM app_users WHERE token = @token AND username = @username)";
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 
@@ -107,7 +100,7 @@ namespace AnthonyscheeresApi.Dao
         /**
 * @author Anthony Scheeres
 */
-        internal string getSensitiveUserInfoFromDatabaseByUsername()
+        internal string getSensitiveUserInfoFromDatabaseByUsername(string username)
         {
             //using MD5 to construct a random and unique token
             const string sqlQueryForLoginUser = "update app_users set token = concat(md5(@username), md5((random()::text))) where username = @username  ; ";
@@ -119,7 +112,7 @@ namespace AnthonyscheeresApi.Dao
              command.Prepare(); //Construct and optimize query
 */
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 
@@ -148,13 +141,13 @@ namespace AnthonyscheeresApi.Dao
 
         }
 
-        internal void changeTokenInDataBaseByUsernameBeforeLoginIn()
+        internal void changeTokenInDataBaseByUsernameBeforeLoginIn(string username)
         {
             //using MD5 to construct a random and unique token
             const string sqlQueryForLoginUser = "update app_users set token = concat(md5(@username), md5((random()::text))) where username = @username  ; ";
 
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 

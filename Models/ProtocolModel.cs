@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AnthonyscheeresApi.Models
 {
-    public enum ProtocolModel
+     public enum ProtocolModel
     {
         http,
         https

@@ -5,14 +5,14 @@ namespace AnthonyscheeresApi.Utilities
     /**
 	 * @author Anthony Scheeres
 	 */
-    public class ValidateInputUtilities
+     internal class ValidateInputUtilities
     {
 
 
         /**
 	 * @author Anthony Scheeres
 	 */
-        public static bool isNullOrEmty(string theStringToCheckIfItsNullorEmty)
+         internal static bool isNullOrEmty(string theStringToCheckIfItsNullorEmty)
         {
             return theStringToCheckIfItsNullorEmty.Length == 0;
         }
@@ -20,7 +20,7 @@ namespace AnthonyscheeresApi.Utilities
         /**
 	 * @author Anthony Scheeres
 	 */
-        public static bool isNumeric(string s)
+         internal static bool isNumeric(string s)
         {
             return Regex.IsMatch(s, @"^\d+$");
         }
@@ -28,7 +28,7 @@ namespace AnthonyscheeresApi.Utilities
         /**
 	 * @author Anthony Scheeres
 	 */
-        public static bool IsValidEmail(string email)
+         internal static bool IsValidEmail(string email)
         {
             try
             {

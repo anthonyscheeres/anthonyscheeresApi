@@ -1,4 +1,5 @@
-﻿using AnthonyscheeresApi.Dao;
+﻿using anthonyscheeresApi.Providers;
+using AnthonyscheeresApi.Dao;
 using AnthonyscheeresApi.Models;
 using AnthonyscheeresApi.Utilities;
 using System;
@@ -9,17 +10,17 @@ namespace AnthonyscheeresApi.Services
     /**
 	 * @author Anthony Scheeres
 	 */
-    public class UserService
+     internal class UserService
     {
 
-        private readonly UserDao userDao = new UserDao();
-
+        private readonly UserDao userDao = DaoProvider.getUser();
+        private readonly TokenService tokenService = ServiceProvider.getToken();
 
 
         /**
 	 * @author Anthony Scheeres
 	 */
-        public string registerValidateUserService(string username, string password, string email)
+         internal string registerValidateUserService(string username, string password, string email)
         {
             return validateRegisterUser(username, password, email);
         }
@@ -27,13 +28,13 @@ namespace AnthonyscheeresApi.Services
 
         internal string validateProfile(string token)
         {        //Get tokenServices by passsing the token
-            TokenService tokenService = new TokenService(token);
+      
 
             string response = ResponseR.success.ToString();
 
 
             //check if the token is valide
-            double id = tokenService.TokenToUserId();
+            double id = tokenService.TokenToUserId(token);
 
             response = userDao.getProfileInformationFromDatabase(id);
 
@@ -51,8 +52,8 @@ namespace AnthonyscheeresApi.Services
         internal string validateShowAllUsersIncludingAdmins(string token)
         {
             string failResponse = ResponseR.fail.ToString(); string response = failResponse;
-            TokenService tokenService = new TokenService(token);
-            tokenService.getPermissionFromDatabaseByTokenIsAdmin();
+        
+            tokenService.getPermissionFromDatabaseByTokenIsAdmin(token);
        
                 response = userDao.showAllUsersIncludingAdmins();
       
@@ -63,7 +64,7 @@ namespace AnthonyscheeresApi.Services
         /**
 	 * @author Anthony Scheeres
 	 */
-        public string registerValidateUserService(UserModel user)
+         internal string registerValidateUserService(UserModel user)
         {
             //check for emty models
             if (user == null) throw new ArgumentNullException(nameof(user));
@@ -79,14 +80,12 @@ namespace AnthonyscheeresApi.Services
 */
         internal string letAnUserChangeItsOwnUsernameOrPassword(UserModel user, string token)
         {
-            //Get tokenServices by passsing the token
-            TokenService tokenService = new TokenService(token);
-
+    
             string response = ResponseR.success.ToString();
 
        
                 //check if the token is valide
-                double id = tokenService.TokenToUserId();
+                double id = tokenService.TokenToUserId(token);
 
                 userDao.changePasswordByUserIdInDatabase(user.password, id, user.username);
 
@@ -128,10 +127,10 @@ namespace AnthonyscheeresApi.Services
         {
             string failMessage = "URL was expired or invalide please try again!";
             string response = failMessage;
-            TokenService tokenService = new TokenService(token);
+       
             try
             {
-                tokenService.TokenToUserId();
+                tokenService.TokenToUserId(token);
             }
             catch (ArgumentNullException error)
             {
@@ -197,7 +196,7 @@ namespace AnthonyscheeresApi.Services
             //link to verify email to change the is_email_verified boolean record
             RestApiModel server = DataModel.getConfigModel().server;
             if (server.UseHttps) protocol = ProtocolModel.https.ToString();
-            string body = server.hostName + ":" + server.portNumber + "/api/User/validateToken/" + token;
+            string body = "http://" + server.hostName + ":" + server.portNumber + "/api/User/validateToken?token=" + token;
 
 
             mailUtilities.sendEmailToAdressWithABodyAndSubjectUsingCredentialsInDataModel(toEmailAddress, username, subject, body);
@@ -213,8 +212,8 @@ namespace AnthonyscheeresApi.Services
             if (user == null) throw new ArgumentNullException(nameof(user));
 
             string failResponse = ResponseR.fail.ToString(); string response = failResponse;
-            TokenService tokenService = new TokenService(token);
-            tokenService.getPermissionFromDatabaseByTokenIsAdmin();
+        
+            tokenService.getPermissionFromDatabaseByTokenIsAdmin(token);
        
                 userDao.deleteUserByUsername(user);
                 response = ResponseR.success.ToString();

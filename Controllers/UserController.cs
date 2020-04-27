@@ -1,4 +1,5 @@
-﻿using AnthonyscheeresApi.Services;
+﻿using anthonyscheeresApi.Providers;
+using AnthonyscheeresApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -6,15 +7,15 @@ namespace AnthonyscheeresApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+     public class UserController : ControllerBase
     {
-        PermissionService permissionService = new PermissionService();
-        UserService userService = new UserService();
+        PermissionService permissionService = ServiceProvider.GetPermission();
+        UserService userService = ServiceProvider.getUser();
 
         // GET: api/User/showAllUsers
         [Route("showAllUsers")]
         [HttpGet("{token}")]
-        public string Get([FromQuery] string token)
+         public string Get([FromQuery] string token)
         {
             return userService.validateShowAllUsersIncludingAdmins(token); ;
         }
@@ -22,7 +23,7 @@ namespace AnthonyscheeresApi.Controllers
         // GET: api/User/validateGetProfile?token={token}
         [HttpGet("token")]
         [Route("validateGetProfile")]
-        public string validateProfileToken([FromQuery] string token)
+         public string validateProfileToken([FromQuery] string token)
         {
 
             return userService.validateProfile(token);
@@ -31,7 +32,7 @@ namespace AnthonyscheeresApi.Controllers
         // POST: api/User/register
         [HttpPost]
         [Route("register")]
-        public string Post([FromBody] UserModel user)
+         public string Post([FromBody] UserModel user)
         {
 
 
@@ -41,7 +42,7 @@ namespace AnthonyscheeresApi.Controllers
         // PUT: api/User/chanceUsernamePassword?token={token}
         [HttpPut("{token}")]
         [Route("chanceUsernamePassword")]
-        public string letAnUserChangeItsOwnUsernameOrPassword([FromQuery] string token, [FromBody] UserModel user)
+         public string letAnUserChangeItsOwnUsernameOrPassword([FromQuery] string token, [FromBody] UserModel user)
         {
 
             return userService.letAnUserChangeItsOwnUsernameOrPassword(user, token);
@@ -50,7 +51,7 @@ namespace AnthonyscheeresApi.Controllers
         // DELETE: api/User/deleteUser?token={token}
         [HttpDelete("{token}")]
         [Route("deleteUser")]
-        public string deleteUserByModel(string token, [FromBody] UserModel user)
+         public string deleteUserByModel(string token, [FromBody] UserModel user)
         {
 
             return userService.validatDeleteUserByModel(token, user);
@@ -59,7 +60,7 @@ namespace AnthonyscheeresApi.Controllers
         // GET: api/User/validateToken?token={token}
         [HttpGet("token")]
         [Route("validateToken")]
-        public string validateToken([FromQuery] string token)
+         public string validateToken([FromQuery] string token)
         {
           
             return userService.validateToken(token);
@@ -71,7 +72,7 @@ namespace AnthonyscheeresApi.Controllers
         [Route("login")]
         [HttpPost]
 
-        public string loginUser([FromBody] UserModel user)
+         public string loginUser([FromBody] UserModel user)
         {
             //ask the permission layer what permission this user has after an validation
             return permissionService.loginUserAfterValidation(user);
@@ -81,7 +82,7 @@ namespace AnthonyscheeresApi.Controllers
         [HttpPost("token")]
         [Route("validateMail")]
 
-        public string sendNewValidateEmailLink([FromQuery] string token)
+         public string sendNewValidateEmailLink([FromQuery] string token)
         {
             return userService.validateMailAgain(token);
         }

@@ -5,11 +5,11 @@ using System.IO;
 
 namespace AnthonyscheeresApi
 {
-    public class Program
+     internal class Program
     {
 
 
-        public static void Main(string[] args)
+         public static void Main(string[] args)
         {
             ConfigFileInDocumetsFolderUtililities directoryUtilitiescs = new ConfigFileInDocumetsFolderUtililities("config.json");
             directoryUtilitiescs.writeDataModelToJsonFileInDocumetsFolder();
@@ -19,7 +19,7 @@ namespace AnthonyscheeresApi
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+         internal static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

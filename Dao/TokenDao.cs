@@ -1,30 +1,27 @@
-﻿using AnthonyscheeresApi.Models;
+﻿using anthonyscheeresApi.Providers;
+using AnthonyscheeresApi.Models;
 using AnthonyscheeresApi.Utilities;
 using Npgsql;
 using System;
 
 namespace AnthonyscheeresApi.Dao
 {
-    public class TokenDao
+     internal class TokenDao
     {
-        private string cs = DataModel.getConfigModel().databaseCredentials.cs;
+        
 
 
 
         /**
    * @author Anthony Scheeres
    */
-        public TokenDao(string cs)
-        {
-            this.cs = cs;
-        }
-
+  
 
 
         /**
    * @author Anthony Scheeres
    */
-        public TokenDao()
+         internal TokenDao()
         {
         }
 
@@ -37,7 +34,7 @@ namespace AnthonyscheeresApi.Dao
 
             var sqlQueryForRegistingUser = "select is_super_user from app_users where token= @token";
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 
@@ -63,7 +60,7 @@ namespace AnthonyscheeresApi.Dao
 
             var sqlQueryForRegistingUser = "select token from app_users where username = @username";
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 
@@ -89,7 +86,7 @@ namespace AnthonyscheeresApi.Dao
 
             var sqlQueryForRegistingUser = "select token from app_users where id = @id";
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 
@@ -115,7 +112,7 @@ namespace AnthonyscheeresApi.Dao
         {
             var sqlQueryForRegistingUser = "select id from app_users where token=@token";
 
-            using var connectionWithDatabase = new NpgsqlConnection(cs);
+            using var connectionWithDatabase = ConnectionProvider.getProvide();
 
             connectionWithDatabase.Open(); //open the connection
 
