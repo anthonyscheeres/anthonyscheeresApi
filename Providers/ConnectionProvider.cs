@@ -10,17 +10,14 @@ namespace anthonyscheeresApi.Providers
      internal static class ConnectionProvider
     {
         
-        private static NpgsqlConnection npgsqlConnection { set; get; }
-       
         
-         internal static NpgsqlConnection getProvide()
-        {
-            if (npgsqlConnection ==null)
-            {
-                string cs = DataModel.getConfigModel().databaseCredentials.cs;
-                npgsqlConnection = ConnectionProvider.getProvide();
+     
 
-            }
+        internal static NpgsqlConnection getProvide()
+        {
+            string cs = DataModel.getConfigModel().databaseCredentials.cs;
+            NpgsqlConnection npgsqlConnection = new NpgsqlConnection(cs);
+
             return npgsqlConnection;
         }
 
