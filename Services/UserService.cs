@@ -139,6 +139,8 @@ namespace AnthonyscheeresApi.Services
 
             }
 
+
+            userDao.makeEmailValide(token);
             string successMessage = "Success; Your account has been verified!";
 
             return successMessage;
