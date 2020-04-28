@@ -49,7 +49,7 @@ namespace AnthonyscheeresApi.Services
 
         internal double TokenToUserId(string token)
         {
-            return TokenToUserId(token);
+            return TokenToUserId2(token);
         }
 
 

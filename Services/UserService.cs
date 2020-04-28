@@ -98,26 +98,28 @@ namespace AnthonyscheeresApi.Services
         /**
 * @author Anthony Scheeres
 */
-
         internal string validateMailAgain(string token)
         {
             string failResponse = ResponseR.fail.ToString(); string response = failResponse;
-            UserDao userDao = new UserDao();
+            UserDao userDao = DaoProvider.getUser();
+
             string email = null;
 
-         
-                email = userDao.getEmailUsingTokenThrowNewException(token);
-        
+
+            email = userDao.getEmailUsingTokenThrowNewException(token);
+
 
 
 
             if (email != null)
             {
-                validateAUsersEmailUsingAValidationEmaill(email, "Gebruiker", token);
+                MailService mail = new MailService(email);
+                mail.validateAUsersEmailUsingAValidationEmaill("Gebruiker", token);
                 response = ResponseR.success.ToString();
             }
             return response;
         }
+
 
 
         /**
