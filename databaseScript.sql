@@ -27,7 +27,7 @@ insert into contact_information_owner(name, place, address, postal_code , family
 	'Anthony Scheeres',
 	'Alphen Aan den Rijn',
 	'Burgemeester Visserpark 16',
-	'2405 CP',
+	'2405 CR',
 	'+31651076027',
 	'info@anthonyscheeres.nl'
 		
@@ -36,7 +36,7 @@ insert into contact_information_owner(name, place, address, postal_code , family
 insert into app_users (is_super_user, username, password) values(
 	TRUE,
 	'admin',
-	concat(md5('admin'), md5('the best password in the world'))
+	concat(md5('admin'), md5('************************************'))
 
 );
 
