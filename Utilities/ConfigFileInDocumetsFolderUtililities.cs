@@ -12,15 +12,13 @@ namespace AnthonyscheeresApi.Utilities
          string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/AnthonyScheeresServer/";
         string filename = "config.json";
 
-  
-
-         internal ConfigFileInDocumetsFolderUtililities(string filename)
+        public ConfigFileInDocumetsFolderUtililities(string path, string filename)
         {
+            this.path = path;
             this.filename = filename;
         }
 
-
-         internal void writeDataModelToJsonFileInDocumetsFolder() 
+        internal void writeDataModelToJsonFileInDocumetsFolder()
         {
             //Construct path to file
             string pathToFile = path + filename;

@@ -1,6 +1,7 @@
 using AnthonyscheeresApi.Utilities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.IO;
 
 namespace AnthonyscheeresApi
@@ -11,11 +12,8 @@ namespace AnthonyscheeresApi
 
          public static void Main(string[] args)
         {
-            ConfigFileInDocumetsFolderUtililities directoryUtilitiescs = new ConfigFileInDocumetsFolderUtililities("config.json");
+            ConfigFileInDocumetsFolderUtililities directoryUtilitiescs = new ConfigFileInDocumetsFolderUtililities(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/AnthonyScheeresServer/", "config.json");
             directoryUtilitiescs.writeDataModelToJsonFileInDocumetsFolder();
-
-
-
             CreateHostBuilder(args).Build().Run();
         }
 

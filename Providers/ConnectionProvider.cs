@@ -9,9 +9,6 @@ namespace anthonyscheeresApi.Providers
 {
      internal static class ConnectionProvider
     {
-        
-        
-     
 
         internal static NpgsqlConnection getProvide()
         {
