@@ -4,7 +4,7 @@ using AnthonyscheeresApi.Models;
 
 namespace AnthonyscheeresApi.Services
 {
-     internal class ContactInfoService
+     internal class ContactInfoService : TokenService
     {
         private readonly ContactInfoDao contactInfoDao = DaoProvider.getContact();
 
@@ -15,9 +15,9 @@ namespace AnthonyscheeresApi.Services
 
         internal string validateChangeContactInfo(string token, ContactInfoModel contactInfo)
         {
-            TokenService tokenService = ServiceProvider.getToken();
+           
             //if token is invalide throw exception
-            tokenService.getPermissionFromDatabaseByTokenIsAdmin(token);
+            getPermissionFromDatabaseByTokenIsAdmin(token);
             //failed response by default
             string failResponse = ResponseR.fail.ToString(); string response = failResponse;
 

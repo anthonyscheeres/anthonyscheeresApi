@@ -10,11 +10,10 @@ namespace AnthonyscheeresApi.Services
     /**
 	 * @author Anthony Scheeres
 	 */
-     internal class UserService
+     internal class UserService : TokenService
     {
 
         private readonly UserDao userDao = DaoProvider.getUser();
-        private readonly TokenService tokenService = ServiceProvider.getToken();
 
 
         /**
@@ -34,7 +33,7 @@ namespace AnthonyscheeresApi.Services
 
 
             //check if the token is valide
-            double id = tokenService.TokenToUserId(token);
+            double id = TokenToUserId(token);
 
             response = userDao.getProfileInformationFromDatabase(id);
 
@@ -53,7 +52,7 @@ namespace AnthonyscheeresApi.Services
         {
             string failResponse = ResponseR.fail.ToString(); string response = failResponse;
         
-            tokenService.getPermissionFromDatabaseByTokenIsAdmin(token);
+            getPermissionFromDatabaseByTokenIsAdmin(token);
        
                 response = userDao.showAllUsersIncludingAdmins();
       
@@ -85,7 +84,7 @@ namespace AnthonyscheeresApi.Services
 
        
                 //check if the token is valide
-                double id = tokenService.TokenToUserId(token);
+                double id = TokenToUserId(token);
 
                 userDao.changePasswordByUserIdInDatabase(user.password, id, user.username);
 
@@ -132,7 +131,7 @@ namespace AnthonyscheeresApi.Services
        
             try
             {
-                tokenService.TokenToUserId(token);
+               TokenToUserId(token);
             }
             catch (ArgumentNullException error)
             {
@@ -217,7 +216,7 @@ namespace AnthonyscheeresApi.Services
 
             string failResponse = ResponseR.fail.ToString(); string response = failResponse;
         
-            tokenService.getPermissionFromDatabaseByTokenIsAdmin(token);
+            getPermissionFromDatabaseByTokenIsAdmin(token);
        
                 userDao.deleteUserByUsername(user);
                 response = ResponseR.success.ToString();
