@@ -29,16 +29,7 @@ namespace AnthonyscheeresApi.Controllers
             return userService.validateProfile(token);
 
         }
-        // POST: api/User/register
-        [HttpPost]
-        [Route("register")]
-         public string Post([FromBody] UserModel user)
-        {
-
-
-            return userService.registerValidateUserService(user);
-        }
-
+    
         // PUT: api/User/chanceUsernamePassword?token={token}
         [HttpPut("{token}")]
         [Route("chanceUsernamePassword")]
